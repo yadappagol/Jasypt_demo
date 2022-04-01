@@ -13,7 +13,7 @@ public interface CustomerService {
 
 	Customer getCustomerById(Long customerId);
 
-	Customer getCustomerByName(String customerName);
+	List<Customer> getCustomerByName(String customerName);
 
 	String removeCustomerById(Long customerId);
 

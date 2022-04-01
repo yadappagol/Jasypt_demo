@@ -22,35 +22,53 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	
+	/**
+	 * @param addCustomerDto
+	 * @return URL : http://localhost:8085/customer/addCustomer
+	 */
 	@PostMapping("/addCustomer")
 	public Customer addCustomer(@RequestBody AddCustomerDto addCustomerDto) {
 		return customerService.addCustomer(addCustomerDto);
 	}
 
+	/**
+	 * URL : http://localhost:8085/customer/getAllCustomers
+	 */
 	@GetMapping("/getAllCustomers")
 	public List<Customer> getAllCustomers() {
 		return customerService.getAllCustomers();
 	}
 
-	@GetMapping("/getCustomer/{id}")
+	/**
+	 * URL : http://localhost:8085/customer/getCustomerById/{id}
+	 */
+	@GetMapping("/getCustomerById/{id}")
 	public Customer getCustomerById(@PathVariable("id") Long customerId) {
 		return customerService.getCustomerById(customerId);
 	}
 
-//	@GetMapping("/getCustomer/{name}")
-//	public Customer getCustomerByName(@PathVariable("name") String customerName) {
-//		return customerService.getCustomerByName(customerName);
-//	}
-
-	@DeleteMapping("/removeCustomer/{id}")
+	/**
+	 * URL : http://localhost:8085/customer/removeCustomerById/{id}
+	 */
+	@DeleteMapping("/removeCustomerById/{id}")
 	public String removeCustomerById(@PathVariable("id") Long customerId) {
 		return customerService.removeCustomerById(customerId);
 	}
 
-//	@DeleteMapping("/removeCustomer/{name}")
-//	public String removeCustomerByName(@PathVariable("name") String customerName) {
-//		return customerService.removeCustomerByName(customerName);
-//	}
+	/**
+	 * URL : http://localhost:8085/customer/getCustomerByName/{name}
+	 */
+	@GetMapping("/getCustomerByName/{name}")
+	public List<Customer> getCustomerByName(@PathVariable("name") String customerName) {
+		return customerService.getCustomerByName(customerName);
+	}
+
+	/**
+	 * URL : http://localhost:8085/customer/removeCustomerByName/{name}
+	 */
+	@DeleteMapping("/removeCustomerByName/{name}")
+	public String removeCustomerByName(@PathVariable("name") String customerName) {
+		return customerService.removeCustomerByName(customerName);
+	}
 
 }
